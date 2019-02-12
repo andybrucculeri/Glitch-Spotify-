@@ -64,7 +64,7 @@ app.get('/category-playlists', function (request, response) {
   
   // Get playlists from a browse category
   // Find out which categories are available here: https://beta.developer.spotify.com/console/get-browse-categories/
-  spotifyApi.getPlaylistsForCategory('pop', { limit : 10, country: 'DE' })
+  spotifyApi.getPlaylistsForCategory('pop', { limit : 5, country: 'DE'}, { limit : 5, country: 'FR'})
     .then(function(data) {
     
     // Send the list of playlists
@@ -73,6 +73,7 @@ app.get('/category-playlists', function (request, response) {
   }, function(err) {
     console.error(err);
   });
+  
 });
 
 app.get('/audio-features', function (request, response) {
