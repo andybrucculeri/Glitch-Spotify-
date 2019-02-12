@@ -76,9 +76,34 @@ app.get('/category-playlists', function (request, response) {
   
 });
 
-spotifyApi.getTracks(trackIds);
+app.get('/tracks', function(request, response) { 
+  //Get the name of the specific track from ID
+  spotifyApi.getTracks(['3bH4HzoZZFq8UpZmI2AMgV', '4uLU6hMCjMI75M1A2tKUQC'])
+    .then(function(data) {
+      
+      //send the data
+      response.send(data.body.tracks);
+    
+    }, function(err) {
+      console.error(err);
+    });
+});
 
+app.get('/audio-features', function (request, response) {
+  
+  // Get the audio features for a track ID
+  spotifyApi.getAudioFeaturesForTracks(['3bH4HzoZZFq8UpZmI2AMgV', '4uLU6hMCjMI75M1A2tKUQC'])
+    .then(function(data) {
+    
+      //Send the audio features object
+      response.send(data.body.audio_features);
+    
+    }, function(err) {
+      console.error(err);
+    });
+});
 
+/*
 app.get('/audio-features', function (request, response) {
   
   // Get the audio features for a track ID
