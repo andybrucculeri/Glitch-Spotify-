@@ -18,7 +18,7 @@ $(function() {
     
     var artists = '';
     data.artists.forEach(function(element){
-      artists = artists + elemet.name + '' ;
+      artists = artists + element.name + '' ;
       console.log('hello');
     });
     
