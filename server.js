@@ -76,10 +76,38 @@ app.get('/category-playlists', function (request, response) {
   
 });
 
+app.get('/tracks', function(request, response) { 
+  //Get the name of the specific track from ID
+  spotifyApi.getTracks(['5qUAdDl59w0Vbu4Gi6ecSX', '7GhIk7Il098yCjg4BQjzvb'])
+    .then(function(data) {
+      
+      //send the data
+      response.send(data.body.tracks);
+    
+    }, function(err) {
+      console.error(err);
+    });
+});
+
 app.get('/audio-features', function (request, response) {
   
   // Get the audio features for a track ID
- /* spotifyApi.getAudioFeaturesForTrack('4uLU6hMCjMI75M1A2tKUQC')
+  spotifyApi.getAudioFeaturesForTracks(['5qUAdDl59w0Vbu4Gi6ecSX', '7GhIk7Il098yCjg4BQjzvb'])
+    .then(function(data) {
+    
+      //Send the audio features object
+      response.send(data.body.audio_features);
+    
+    }, function(err) {
+      console.error(err);
+    });
+});
+
+/*
+app.get('/audio-features', function (request, response) {
+  
+  // Get the audio features for a track ID
+ spotifyApi.getAudioFeaturesForTrack('4uLU6hMCjMI75M1A2tKUQC')
     .then(function(data) {
     
       //Send the audio features object
@@ -88,21 +116,18 @@ app.get('/audio-features', function (request, response) {
     }, function(err) {
       console.error(err);
     }); 
+});
   
-}); */
-  
-  spotifyApi.getAudioFeaturesForTracks(['3bH4HzoZZFq8UpZmI2AMgV','4uLU6hMCjMI75M1A2tKUQC'])
+
+    spotifyApi.getAudioFeaturesForTracks(['3bH4HzoZZFq8UpZmI2AMgV', '4uLU6hMCjMI75M1A2tKUQC'])
    .then(function(data) {
-    .then(function(data) {
-    
       //Send the audio features object
       response.send(data.body.artists);
-    
     }, function(err) {
       console.error(err);
     }); 
-  });
 
+*/
 app.get('/artist', function (request, response) {
   
   // Get information about an artist
