@@ -18,7 +18,7 @@ $(function() {
     
     var artists = '';
     data.artists.forEach(function(element){
-      artists = artists + elemet.name + '' ;
+      artists = artists + element.name + '' ;
       console.log('hello');
     });
     
@@ -36,6 +36,7 @@ $(function() {
     console.group('%cResponse from /category-playlists', 'color: #F037A5; font-size: large');
     console.log(data);
     console.groupEnd();
+    
     
     // Display the covers of the playlists
     data.items.map(function(playlist, i) {
