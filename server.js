@@ -79,7 +79,7 @@ app.get('/category-playlists', function (request, response) {
 app.get('/audio-features', function (request, response) {
   
   // Get the audio features for a track ID
-  spotifyApi.getAudioFeaturesForTrack('4uLU6hMCjMI75M1A2tKUQC')
+ /* spotifyApi.getAudioFeaturesForTrack('4uLU6hMCjMI75M1A2tKUQC')
     .then(function(data) {
     
       //Send the audio features object
@@ -89,7 +89,18 @@ app.get('/audio-features', function (request, response) {
       console.error(err);
     }); 
   
-});
+}); */
+  
+  spotifyApi.getAudioFeaturesForTracks(['3bH4HzoZZFq8UpZmI2AMgV','4uLU6hMCjMI75M1A2tKUQC'])
+  .then(function(data) {
+      //Send the audio features object
+      response.send(data.body);
+    
+    }, function(err) {
+      console.error(err);
+    }); 
+  
+  });
 
 app.get('/artist', function (request, response) {
   
