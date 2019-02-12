@@ -76,6 +76,8 @@ app.get('/category-playlists', function (request, response) {
   
 });
 
+spotifyApi.getTracks(trackIds);
+
 
 app.get('/audio-features', function (request, response) {
   
