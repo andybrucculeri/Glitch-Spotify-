@@ -93,10 +93,14 @@ app.get('/audio-features', function (request, response) {
   
   spotifyApi.getAudioFeaturesForTracks(['3bH4HzoZZFq8UpZmI2AMgV','4uLU6hMCjMI75M1A2tKUQC'])
    .then(function(data) {
-    console.log(data.body);
-  }, function(err) {
-    done(err);
-  });
+    .then(function(data) {
+    
+      //Send the audio features object
+      response.send(data.body.artists);
+    
+    }, function(err) {
+      console.error(err);
+    }); 
   });
 
 app.get('/artist', function (request, response) {
