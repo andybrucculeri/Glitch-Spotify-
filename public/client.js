@@ -46,6 +46,22 @@ $(function() {
     });
   });
   
+  //experiemental code
+    $.get('/tracks', function(data) {
+    // "Data" is the object we get from the API. See server.js for the function that returns it.
+    console.group('%cResponse from /tracks', 'color: #F037A5; font-size: large');
+    console.log(data);
+    console.groupEnd();
+    
+    // The name of the track in 'Audio Features'
+    for(var i = 0; i < data.length; i++) {
+      console.log(data[i].name);
+      var trackTitle = $('<h3>' + data[i].name + '</h3>');
+      trackTitle.appendTo('#name'); 
+    }
+    
+});
+  
   $.get('/audio-features', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
@@ -53,7 +69,7 @@ $(function() {
     console.groupEnd();
     
     // The audio features we want to show
-    var keys = ["danceability", "energy", "acousticness"]
+    var keys = ["danceability", "energy", "acousticness", "liveness", "loudness"]
     
     // Display the audio features
     keys.map(function(key, i) {

@@ -64,7 +64,7 @@ app.get('/category-playlists', function (request, response) {
   
   // Get playlists from a browse category
   // Find out which categories are available here: https://beta.developer.spotify.com/console/get-browse-categories/
-  spotifyApi.getPlaylistsForCategory('pop', { limit : 10, country: 'DE' })
+  spotifyApi.getPlaylistsForCategory('pop', { limit : 10, country: 'DE'})
     .then(function(data) {
     
     // Send the list of playlists
@@ -73,12 +73,24 @@ app.get('/category-playlists', function (request, response) {
   }, function(err) {
     console.error(err);
   });
+  
+  app.get('/tracks', function(request, response) { 
+  //Get the name of the specific track from ID
+  spotifyApi.getTracks(['3bH4HzoZZFq8UpZmI2AMgV'])
+    .then(function(data) {
+      
+      //send the data
+      response.send(data.body.tracks);
+    
+    }, function(err) {
+      console.error(err);
+    });
 });
-
-app.get('/audio-features', function (request, response) {
+  
+  app.get('/audio-features', function (request, response) {
   
   // Get the audio features for a track ID
-  spotifyApi.getAudioFeaturesForTrack('4uLU6hMCjMI75M1A2tKUQC')
+ spotifyApi.getAudioFeaturesForTrack('3bH4HzoZZFq8UpZmI2AMgV')
     .then(function(data) {
     
       //Send the audio features object
@@ -86,9 +98,27 @@ app.get('/audio-features', function (request, response) {
     
     }, function(err) {
       console.error(err);
+    }); 
+});
+  
+});
+/*
+
+app.get('/audio-features', function (request, response) {
+  
+  // Get the audio features for a track ID
+  spotifyApi.getAudioFeaturesForTracks(['3bH4HzoZZFq8UpZmI2AMgV', '4uLU6hMCjMI75M1A2tKUQC'])
+    .then(function(data) {
+    
+      //Send the audio features object
+      response.send(data.body.audio_features);
+    
+    }, function(err) {
+      console.error(err);
     });
 });
 
+*/
 app.get('/artist', function (request, response) {
   
   // Get information about an artist
