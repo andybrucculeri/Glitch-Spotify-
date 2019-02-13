@@ -118,7 +118,7 @@ app.get('/audio-features', function (request, response) {
     });
 });
 
-
+*/
 app.get('/artist', function (request, response) {
   
   // Get information about an artist
@@ -132,17 +132,6 @@ app.get('/artist', function (request, response) {
       console.error(err);
     });
 });
-
-*/
-
-app.get('/artist', function (request, response) {
-spotifyApi.getArtists(['2hazSY4Ef3aB9ATXW7F5w3', '6J6yx1t3nwIDyPXk5xa7O8'])
-  .then(function(data) {
-    console.log('Artists information', data.body);
-  }, function(err) {
-    console.error(err);
-  });
-  });
 
 app.get('/artist-top-tracks', function (request, response) {
   
