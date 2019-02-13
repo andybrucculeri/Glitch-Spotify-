@@ -53,7 +53,7 @@ $(function() {
     console.log(data);
     console.groupEnd();
     
-    // The name of the track in 'Audio Features'
+    // name of track 
     for(var i = 0; i < data.length; i++) {
       console.log(data[i].name);
       var findName = $('<h3>' + data[i].name + '</h3>');
@@ -102,13 +102,13 @@ $(function() {
     });
     
     //display artist's popularity
-    var pop = $('<h3>' + data.popularity + '</h3>');
+    var pop = $('<h3> Popularity score = ' + data.popularity + '</h3>');
     pop.appendTo('#artist-container');
-  });
-  
-  //display number of followers
-    var fol = $('<h3>' + data.followers.total + '</h3>');
+    
+     //display number of followers
+    var fol = $('<h3>' + data.followers.total + ' followers </h3>');
     fol.appendTo('#artist-container');
+  });
   
   $.get('/artist-top-tracks', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
