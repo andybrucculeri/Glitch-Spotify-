@@ -109,17 +109,18 @@ $(function() {
     var fol = $('<h3>' + data.followers.total + ' followers </h3>');
     fol.appendTo('#artist-container');
     
-      for(var i = 0; i < data.length; i++) {
-      console.log(data.artists.name);
-      var findName = $('<h3>' + data[i].name + '</h3>');
-      findName.appendTo('#top-tracks-container'); 
-  };
     });
   $.get('/artist-top-tracks', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /artist-top-tracks', 'color: #F037A5; font-size: large');
     console.log(data);
     console.groupEnd();
+    
+          for(var i = 0; i < data.length; i++) {
+      console.log(data[0].artists[0].name);
+      var findArtist = $('<h3>' + 'hi' + '</h3>');
+      findArtist.appendTo('#top-tracks-container'); 
+  };
     
     // Display the audio features
     data.map(function(track, i) {
