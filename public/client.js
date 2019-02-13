@@ -57,7 +57,8 @@ $(function() {
     for(var i = 0; i < data.length; i++) {
       console.log(data[i].name);
       var trackTitle = $('<h3>' + data[i].name + '</h3>');
-      trackTitle.appendTo('#audio-features-name'); 
+      console.log(data[0].name);
+      trackTitle.appendTo('#name'); 
     }
     
 });
