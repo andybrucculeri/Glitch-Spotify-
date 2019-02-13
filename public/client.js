@@ -116,11 +116,9 @@ $(function() {
     console.log(data);
     console.groupEnd();
     
-          for(var i = 0; i < data.length; i++) {
       console.log(data[0].artists[0].name);
-      var findArtist = $('<h3>' + 'hi' + '</h3>');
+      var findArtist = $('<h3>' + data[0].artists[0].name + '</h3>');
       findArtist.appendTo('#top-tracks-container'); 
-  };
     
     // Display the audio features
     data.map(function(track, i) {
